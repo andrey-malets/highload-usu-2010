@@ -3,7 +3,7 @@
 namespace Common
 {
     // что-то примерное, для теста HighLoadWeb
-    public class HighLoadDataString
+    public class DataContract
     {
         private Guid id;
 
@@ -35,7 +35,7 @@ namespace Common
             get { return revisionTime; }
         }
 
-        public HighLoadDataString(int number, string name)
+        public DataContract(int number, string name)
         {
             this.id = System.Guid.NewGuid();
             this.number = number;
