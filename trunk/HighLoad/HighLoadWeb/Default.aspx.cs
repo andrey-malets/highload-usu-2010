@@ -94,7 +94,7 @@ public partial class _Default : System.Web.UI.Page
         string name = ((TextBox)DetailsViewData.Rows[2].Controls[1].Controls[0]).Text;
         TestServer.UpdateData(id, number, name);
         DetailsViewData.ChangeMode(DetailsViewMode.ReadOnly);
-        List<HighLoadDataString> allData = TestServer.GetAllData();
+        List<DataContract> allData = TestServer.GetAllData();
         DetailsViewData.DataSource = allData;
         DetailsViewData.DataBind();
         GridViewData.DataSource = allData;
@@ -104,19 +104,19 @@ public partial class _Default : System.Web.UI.Page
     protected void HighLoadDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
     {
         TestServer.AddData(getHighLoadDataString());
-        List<HighLoadDataString> allData = TestServer.GetAllData();
+        List<DataContract> allData = TestServer.GetAllData();
         DetailsViewData.DataSource = allData;
         DetailsViewData.DataBind();
         GridViewData.DataSource = allData;
         GridViewData.DataBind();
     }
 
-    private HighLoadDataString getHighLoadDataString()
+    private DataContract getHighLoadDataString()
     {
         //string id = ((TextBox)DetailsViewData.Rows[0].Controls[1].Controls[0]).Text;
         int number = int.Parse(((TextBox)DetailsViewData.Rows[1].Controls[1].Controls[0]).Text);
         string name = ((TextBox)DetailsViewData.Rows[2].Controls[1].Controls[0]).Text;
-        return new HighLoadDataString(number, name);
+        return new DataContract(number, name);
     }
 }
 
