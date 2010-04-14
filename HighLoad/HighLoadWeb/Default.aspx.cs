@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using App_Code;
 using Common;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Default : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,12 +21,13 @@ public partial class _Default : System.Web.UI.Page
         if (DetailsViewData.FooterRow != null)
         {
             int commandRowIndex = DetailsViewData.Rows.Count - 1;
-            DetailsViewRow commandRow = DetailsViewData.Rows[commandRowIndex];
+            if(commandRowIndex == -1) return;
+            var commandRow = DetailsViewData.Rows[commandRowIndex];
 
-            DataControlFieldCell cell = (DataControlFieldCell)commandRow.Controls[0];
+            var cell = (DataControlFieldCell)commandRow.Controls[0];
             foreach (Control ctl in cell.Controls)
             {
-                LinkButton link = ctl as LinkButton;
+                var link = ctl as LinkButton;
                 if (link != null)
                 {
                     if (link.CommandName == "Delete")
@@ -55,16 +55,22 @@ public partial class _Default : System.Web.UI.Page
         GridViewData.DataBind();
     }
 
-    protected void HighLoadDetailsView_PageIndexChanging(Object sender, DetailsViewPageEventArgs e)
-    {
-        DetailsViewData.DataSource = TestServer.GetAllData();
-        DetailsViewData.PageIndex = e.NewPageIndex + GridViewData.PageSize * GridViewData.PageIndex;
-        DetailsViewData.DataBind();
-    }
-
     protected void HighLoadGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DetailsViewData.ChangeMode(DetailsViewMode.ReadOnly);
+        SetIndex();
+    }
+
+    private void SetIndex()
+    {
+        if (GridViewData.PageIndex != -1 && GridViewData.Rows.Count != 0)
+        {
+            DetailsViewData.ChangeMode(DetailsViewMode.ReadOnly);
+            SetDetailsViewDataPageIndex();
+        }
+    }
+
+    private void SetDetailsViewDataPageIndex()
+    {
         DetailsViewData.DataSource = TestServer.GetAllData();
         DetailsViewData.PageIndex = GridViewData.SelectedIndex + GridViewData.PageSize * GridViewData.PageIndex;
         DetailsViewData.DataBind();
@@ -72,15 +78,23 @@ public partial class _Default : System.Web.UI.Page
 
     protected void HighLoadDetailsView_ModeChanging(object sender, DetailsViewModeEventArgs e)
     {
-        DetailsViewData.ChangeMode(DetailsViewMode.Edit);
-        DetailsViewData.DataSource = TestServer.GetAllData();
-        DetailsViewData.PageIndex = GridViewData.SelectedIndex;
-        DetailsViewData.DataBind();
+        if (e.NewMode != DetailsViewMode.ReadOnly && DetailsViewData.CurrentMode != DetailsViewMode.ReadOnly)
+        {
+            SetIndex();
+            return;
+        }
+        DetailsViewData.ChangeMode(e.NewMode);
+
+        if (e.NewMode == DetailsViewMode.Edit)
+        {
+            SetDetailsViewDataPageIndex();
+        }
     }
 
     protected void HighLoadDetailsView_ItemDeleting(object sender, DetailsViewDeleteEventArgs e)
     {
-        TestServer.DeleteData(new Guid(GridViewData.SelectedDataKey.Value.ToString()));
+        if (GridViewData.SelectedDataKey != null)
+            TestServer.DeleteData(new Guid(GridViewData.SelectedDataKey.Value.ToString()));
         DetailsViewData.ChangeMode(DetailsViewMode.Insert);
         GridViewData.DataSource = TestServer.GetAllData();
         GridViewData.SelectedIndex = -1;
@@ -89,21 +103,28 @@ public partial class _Default : System.Web.UI.Page
 
     protected void HighLoadDetailsView_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
     {
-        Guid id = new Guid(GridViewData.SelectedDataKey.Value.ToString());
-        int number = int.Parse(((TextBox)DetailsViewData.Rows[1].Controls[1].Controls[0]).Text);
-        string name = ((TextBox)DetailsViewData.Rows[2].Controls[1].Controls[0]).Text;
-        TestServer.UpdateData(id, number, name);
+        if (GridViewData.SelectedDataKey != null)
+        {
+            var id = new Guid(GridViewData.SelectedDataKey.Value.ToString());
+            DataContract dataContract = GetHighLoadDataString();
+            if (dataContract != null)
+                TestServer.UpdateData(id, dataContract.Number, dataContract.Name);
+            else return;
+        }
         DetailsViewData.ChangeMode(DetailsViewMode.ReadOnly);
-        List<DataContract> allData = TestServer.GetAllData();
-        DetailsViewData.DataSource = allData;
-        DetailsViewData.DataBind();
-        GridViewData.DataSource = allData;
-        GridViewData.DataBind();
+        UpdateAllDataSource();
     }
 
     protected void HighLoadDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
     {
-        TestServer.AddData(getHighLoadDataString());
+        DataContract dataContract = GetHighLoadDataString();
+        if(dataContract != null)
+            TestServer.AddData(dataContract);
+        UpdateAllDataSource();
+    }
+
+    private void UpdateAllDataSource()
+    {
         List<DataContract> allData = TestServer.GetAllData();
         DetailsViewData.DataSource = allData;
         DetailsViewData.DataBind();
@@ -111,11 +132,25 @@ public partial class _Default : System.Web.UI.Page
         GridViewData.DataBind();
     }
 
-    private DataContract getHighLoadDataString()
+    private DataContract GetHighLoadDataString()
     {
-        //string id = ((TextBox)DetailsViewData.Rows[0].Controls[1].Controls[0]).Text;
-        int number = int.Parse(((TextBox)DetailsViewData.Rows[1].Controls[1].Controls[0]).Text);
+        int number;
+        string err = string.Empty;
+        if(!int.TryParse(((TextBox)DetailsViewData.Rows[1].Controls[1].Controls[0]).Text, out number))
+        {
+            err = "Number field must be an integer.";
+        }
         string name = ((TextBox)DetailsViewData.Rows[2].Controls[1].Controls[0]).Text;
+        if (name.Equals(string.Empty))
+        {
+            err += "<br />Name field can not be empty.";
+        }
+        if (!err.Equals(string.Empty))
+        {
+            InsertValidator.ErrorMessage = err;
+            InsertValidator.IsValid = false;
+            return null;
+        }
         return new DataContract(number, name);
     }
 }
