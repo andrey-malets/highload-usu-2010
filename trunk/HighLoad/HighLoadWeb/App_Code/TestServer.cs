@@ -1,65 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Common;
 
-/// <summary>
-/// Summary description for TestServer
-/// </summary>
-public class TestServer
+namespace App_Code
 {
-    private static List<DataContract> allData;
-
-    static TestServer()
+    public class TestServer
     {
-        allData = new List<DataContract>();
-        allData.Add(new DataContract(1, "abstract"));
-        allData.Add(new DataContract(2, "event"));
-        allData.Add(new DataContract(3, "new"));
-        allData.Add(new DataContract(4, "struct"));
-        allData.Add(new DataContract(5, "as"));
-        allData.Add(new DataContract(6, "explicit"));
-        allData.Add(new DataContract(7, "null"));
-        allData.Add(new DataContract(8, "switch"));
-        allData.Add(new DataContract(9, "base"));
-        allData.Add(new DataContract(10, "extern"));
-        allData.Add(new DataContract(11, "object"));
-        allData.Add(new DataContract(12, "this"));
-        allData.Add(new DataContract(13, "bool"));
-        allData.Add(new DataContract(14, "false"));
-        allData.Add(new DataContract(15, "operator"));
-        allData.Add(new DataContract(16, "throw"));
-        allData.Add(new DataContract(17, "break"));
-        allData.Add(new DataContract(18, "finally"));
-        allData.Add(new DataContract(19, "out"));
-    }
+        private static readonly List<DataContract> AllData;
 
-    public static List<DataContract> GetAllData()
-    {
-        return allData;
-    }
+        static TestServer()
+        {
+            AllData = new List<DataContract>
+                          {
+                              new DataContract(1, "abstract"),
+                              new DataContract(2, "event"),
+                              new DataContract(3, "new"),
+                              new DataContract(4, "struct"),
+                              new DataContract(5, "as"),
+                              new DataContract(6, "explicit"),
+                              new DataContract(7, "null"),
+                              new DataContract(8, "switch"),
+                              new DataContract(9, "base"),
+                              new DataContract(10, "extern"),
+                              new DataContract(11, "object"),
+                              new DataContract(12, "this"),
+                              new DataContract(13, "bool"),
+                              new DataContract(14, "false"),
+                              new DataContract(15, "operator"),
+                              new DataContract(16, "throw"),
+                              new DataContract(17, "break"),
+                              new DataContract(18, "finally"),
+                              new DataContract(19, "out")
+                          };
+        }
 
-    private static DataContract getHighLoadDataString(Guid id)
-    {
-        return allData.Where<DataContract>(c => c.Id == id)
-            .Take<DataContract>(1).ToList<DataContract>()[0];
-    }
+        public static List<DataContract> GetAllData()
+        {
+            return AllData;
+        }
 
-    public static void DeleteData(Guid id)
-    {
-        allData.Remove(getHighLoadDataString(id));
-    }
+        private static DataContract GetHighLoadDataString(Guid id)
+        {
+            return AllData.Where(c => c.Id == id)
+                .Take(1).ToList()[0];
+        }
 
-    public static void AddData(DataContract data)
-    {
-        allData.Add(data);
-    }
+        public static void DeleteData(Guid id)
+        {
+            AllData.Remove(GetHighLoadDataString(id));
+        }
 
-    public static void UpdateData(Guid id, int number, string name)
-    {
-        DataContract dataContract = getHighLoadDataString(id);
-        dataContract.Number = number;
-        dataContract.Name = name;
+        public static void AddData(DataContract data)
+        {
+            AllData.Add(data);
+        }
+
+        public static void UpdateData(Guid id, int number, string name)
+        {
+            DataContract dataContract = GetHighLoadDataString(id);
+            dataContract.Number = number;
+            dataContract.Name = name;
+        }
     }
 }
