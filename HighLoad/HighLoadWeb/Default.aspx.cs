@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using App_Code;
-using Common;
+using Common.DataContracts;
 
 public partial class Default : Page
 {
@@ -106,9 +106,9 @@ public partial class Default : Page
         if (GridViewData.SelectedDataKey != null)
         {
             var id = new Guid(GridViewData.SelectedDataKey.Value.ToString());
-            DataContract dataContract = GetHighLoadDataString();
-            if (dataContract != null)
-                TestServer.UpdateData(id, dataContract.Number, dataContract.Name);
+            DataRow dataRow = GetHighLoadDataString();
+            if (dataRow != null)
+                TestServer.UpdateData(id, dataRow.Number, dataRow.Name);
             else return;
         }
         DetailsViewData.ChangeMode(DetailsViewMode.ReadOnly);
@@ -117,22 +117,22 @@ public partial class Default : Page
 
     protected void HighLoadDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
     {
-        DataContract dataContract = GetHighLoadDataString();
-        if(dataContract != null)
-            TestServer.AddData(dataContract);
+        DataRow dataRow = GetHighLoadDataString();
+        if(dataRow != null)
+            TestServer.AddData(dataRow);
         UpdateAllDataSource();
     }
 
     private void UpdateAllDataSource()
     {
-        List<DataContract> allData = TestServer.GetAllData();
+        List<DataRow> allData = TestServer.GetAllData();
         DetailsViewData.DataSource = allData;
         DetailsViewData.DataBind();
         GridViewData.DataSource = allData;
         GridViewData.DataBind();
     }
 
-    private DataContract GetHighLoadDataString()
+    private DataRow GetHighLoadDataString()
     {
         int number;
         string err = string.Empty;
@@ -151,7 +151,7 @@ public partial class Default : Page
             InsertValidator.IsValid = false;
             return null;
         }
-        return new DataContract(number, name);
+        return new DataRow(number, name);
     }
 }
 
