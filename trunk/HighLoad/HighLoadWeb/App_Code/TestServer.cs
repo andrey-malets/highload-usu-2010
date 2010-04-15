@@ -1,46 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common;
+using Common.DataContracts;
 
 namespace App_Code
 {
     public class TestServer
     {
-        private static readonly List<DataContract> AllData;
+        private static readonly List<DataRow> AllData;
 
         static TestServer()
         {
-            AllData = new List<DataContract>
+            AllData = new List<DataRow>
                           {
-                              new DataContract(1, "abstract"),
-                              new DataContract(2, "event"),
-                              new DataContract(3, "new"),
-                              new DataContract(4, "struct"),
-                              new DataContract(5, "as"),
-                              new DataContract(6, "explicit"),
-                              new DataContract(7, "null"),
-                              new DataContract(8, "switch"),
-                              new DataContract(9, "base"),
-                              new DataContract(10, "extern"),
-                              new DataContract(11, "object"),
-                              new DataContract(12, "this"),
-                              new DataContract(13, "bool"),
-                              new DataContract(14, "false"),
-                              new DataContract(15, "operator"),
-                              new DataContract(16, "throw"),
-                              new DataContract(17, "break"),
-                              new DataContract(18, "finally"),
-                              new DataContract(19, "out")
+                              new DataRow(1, "abstract"),
+                              new DataRow(2, "event"),
+                              new DataRow(3, "new"),
+                              new DataRow(4, "struct"),
+                              new DataRow(5, "as"),
+                              new DataRow(6, "explicit"),
+                              new DataRow(7, "null"),
+                              new DataRow(8, "switch"),
+                              new DataRow(9, "base"),
+                              new DataRow(10, "extern"),
+                              new DataRow(11, "object"),
+                              new DataRow(12, "this"),
+                              new DataRow(13, "bool"),
+                              new DataRow(14, "false"),
+                              new DataRow(15, "operator"),
+                              new DataRow(16, "throw"),
+                              new DataRow(17, "break"),
+                              new DataRow(18, "finally"),
+                              new DataRow(19, "out")
                           };
         }
 
-        public static List<DataContract> GetAllData()
+        public static List<DataRow> GetAllData()
         {
             return AllData;
         }
 
-        private static DataContract GetHighLoadDataString(Guid id)
+        private static DataRow GetHighLoadDataString(Guid id)
         {
             return AllData.Where(c => c.Id == id)
                 .Take(1).ToList()[0];
@@ -51,16 +51,16 @@ namespace App_Code
             AllData.Remove(GetHighLoadDataString(id));
         }
 
-        public static void AddData(DataContract data)
+        public static void AddData(DataRow data)
         {
             AllData.Add(data);
         }
 
         public static void UpdateData(Guid id, int number, string name)
         {
-            DataContract dataContract = GetHighLoadDataString(id);
-            dataContract.Number = number;
-            dataContract.Name = name;
+            DataRow dataRow = GetHighLoadDataString(id);
+            dataRow.Number = number;
+            dataRow.Name = name;
         }
     }
 }

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Common;
+using Common.DataContracts;
 
 public partial class Trash : System.Web.UI.Page
 {
-    protected DataContract Entity { get; private set; }
+    protected DataRow Entity { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,7 +13,7 @@ public partial class Trash : System.Web.UI.Page
     private void GetEntity()
     {
         if (Request["id"] == null)
-            Entity = new DataContract();
+            Entity = new DataRow();
         else
         {
             //load DataContract by id from storage

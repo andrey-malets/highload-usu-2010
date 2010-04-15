@@ -3,8 +3,8 @@ using Common.DataContracts;
 
 namespace Common
 {
-	public interface IIndexClient
+	public interface IStorageClient
 	{
-		IEnumerable<DataRow> Search();
+		IEnumerable<IStoragable> Update(long revision);
 	}
 }

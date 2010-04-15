@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Common.DataContracts;
 
 namespace Common
 {
@@ -14,7 +15,7 @@ namespace Common
 			this.transport = transport;
 		}
 
-		public IEnumerable<DataContract> Search()
+		public IEnumerable<DataRow> Search()
 		{
 			throw new NotImplementedException();
 		}
