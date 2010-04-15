@@ -5,42 +5,29 @@ namespace Common
     // что-то примерное, для теста HighLoadWeb
     public class DataContract
     {
-        private Guid id;
 
-        public Guid Id
+        public Guid Id{ get; private set;}
+
+
+        public string Name{ get; set;}
+
+
+        public int Number { get; set; }
+
+
+        public DateTime RevisionTime{ get; private set;}
+
+        public DataContract()
         {
-            get { return id; }
-        }
-
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        private int number;
-
-        public int Number
-        {
-            get { return number; }
-            set { number = value; }
-        }
-
-        private DateTime revisionTime;
-
-        public DateTime RevisionTime
-        {
-            get { return revisionTime; }
+            this.Id = System.Guid.NewGuid();
+            this.RevisionTime = DateTime.Now;
         }
 
         public DataContract(int number, string name)
+            : this()
         {
-            this.id = System.Guid.NewGuid();
-            this.number = number;
-            this.name = name;
-            this.revisionTime = DateTime.Now;
+            Name = name;
+            Number = number;
         }
     }
 }
