@@ -5,7 +5,7 @@
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
-    color: #696969;
+    color: Black;
 }
 
 .page
@@ -63,4 +63,32 @@
 tr.bounds
 {
 	background-color: #4b6c9e;
+}
+
+tr.title
+{
+	background-color: #507CD1; 
+	color: White; 
+	font-weight: bold;	
+}
+
+.view
+{
+	padding: 6px;
+}
+
+a
+{
+	color: Blue;	
+	text-decoration: underline;
+}
+
+a:hover, a:active 
+{
+	color: Blue;
+}
+
+a.page
+{
+	color: White;
 }
