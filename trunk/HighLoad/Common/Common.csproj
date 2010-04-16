@@ -50,7 +50,6 @@
     <Compile Include="IIndexClient.cs" />
     <Compile Include="IIndexServer.cs" />
     <Compile Include="IndexClient.cs" />
-    <Compile Include="IndexServer.cs" />
     <Compile Include="IServerEndpoint.cs" />
     <Compile Include="IStorageClient.cs" />
     <Compile Include="DataContracts\IStoragable.cs" />
