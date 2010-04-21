@@ -7,7 +7,7 @@
     <table>
         <tr>
             <td valign="top" style="border:solid 1px black;">
-                <view:AllViewData ID="ViewAllData" runat="server" OnSelect="ViewAllData_Select" />
+                <view:AllViewData ID="ViewAllData" runat="server" />
             </td>
             <td valign="top" style="border:solid 1px black;">
                 <view:DetailsViewData ID="ViewDetailsData" runat="server" />

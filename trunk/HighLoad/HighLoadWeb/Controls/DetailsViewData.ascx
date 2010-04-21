@@ -1,2 +1,3 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="~/Controls/DetailsViewData.ascx.cs" Inherits="Controls.DetailsViewData" %>
-<asp:TextBox ID="Example" runat="server" />
+
+<asp:PlaceHolder ID="PlaceHolderOperation" runat="server" />

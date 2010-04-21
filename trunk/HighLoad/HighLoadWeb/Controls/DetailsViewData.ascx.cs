@@ -5,14 +5,33 @@ namespace Controls
 {
     public partial class DetailsViewData : UserControl
     {
-        protected void Page_Load(object sender, EventArgs e)
+        void Page_Init(object sender, EventArgs e)
         {
+            if(Request["act"] != null)
+            {
+                switch(Request["act"])
+                {
+                    case "read":
+                        PlaceHolderOperation.Controls.Add(LoadControl("~/Controls/ReadData.ascx"));
+                        return;
+                    case "edit":
+                        PlaceHolderOperation.Controls.Add(LoadControl("~/Controls/EditData.ascx"));
+                        return;
+                    case "create":
+                        PlaceHolderOperation.Controls.Add(LoadControl("~/Controls/CreateData.ascx"));
+                        return;
+                    default:
+                        Response.Redirect(Request.Path);
+                        return;
+                }
+            }
 
+            PlaceHolderOperation.Controls.Add(LoadControl("~/Controls/CreateData.ascx"));
         }
 
-        public void ViewElement(Guid id)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Example.Text = id.ToString();
+            
         }
     }
 }

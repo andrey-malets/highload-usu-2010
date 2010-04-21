@@ -40,15 +40,14 @@ namespace App_Code
             return AllData;
         }
 
-        private static DataRow GetHighLoadDataString(Guid id)
+        public static DataRow GetData(Guid id)
         {
-            return AllData.Where(c => c.Id == id)
-                .Take(1).ToList()[0];
+            return AllData.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public static void DeleteData(Guid id)
         {
-            AllData.Remove(GetHighLoadDataString(id));
+            AllData.Remove(GetData(id));
         }
 
         public static void AddData(DataRow data)
@@ -58,9 +57,12 @@ namespace App_Code
 
         public static void UpdateData(Guid id, int number, string name)
         {
-            DataRow dataRow = GetHighLoadDataString(id);
-            dataRow.Number = number;
-            dataRow.Name = name;
+            DataRow dataRow = GetData(id);
+            if (dataRow != null)
+            {
+                dataRow.Number = number;
+                dataRow.Name = name;
+            }
         }
     }
 }
