@@ -13,8 +13,10 @@
     </HeaderTemplate>
     <ItemTemplate>
     <tr>
-        <td class="view"><asp:LinkButton ID="SelectLink" runat="server" 
-            Text="select" OnClick="SelectLink_Click" CommandArgument=<%# Eval("Id")%> />
+        <td class="view">
+            <asp:HyperLink ID="SelectLink" runat="server"
+            NavigateUrl=<%# GetSelectUrl(Eval("Id").ToString()) %> 
+            Text="select" />
         </td>
         <td class="view"><%# Eval("Number")%></td>
         <td class="view"><%# Eval("Name")%></td>
@@ -22,17 +24,17 @@
     </tr>
     </ItemTemplate>
     <FooterTemplate>
-        <asp:Repeater ID="ViewPage" runat="server" OnItemCommand="ViewPage_ItemCommand">
+        <asp:Repeater ID="ViewPage" runat="server">
             <HeaderTemplate>
     <tr class="title">
         <td colspan="4" class="view" align="center">            
             </HeaderTemplate>
             <ItemTemplate>
-                <asp:LinkButton ID="PageLink" runat="server" ForeColor="White" 
-                    Font-Underline = "<%# Container.DataItem.ToString() != ((PageNumber + 1).ToString()) %>"
-                    CommandArgument="<%# Container.DataItem %>">
+                <asp:HyperLink ID="PageLink" runat="server" ForeColor="White" 
+                    Font-Underline="<%# Container.DataItem.ToString() != PageNumber.ToString() %>" 
+                    NavigateUrl=<%# GetPageUrl(Container.DataItem.ToString())%> >
                     <%# Container.DataItem %>
-                </asp:LinkButton> 
+                </asp:HyperLink>
             </ItemTemplate>
             <FooterTemplate>
         </td>

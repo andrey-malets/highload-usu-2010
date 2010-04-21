@@ -7,35 +7,46 @@ namespace Controls
 {
     public partial class AllViewlData : System.Web.UI.UserControl
     {
-        public delegate void SelectHandler(Guid id);       
-        public event SelectHandler Select;
-
         private const int PageSize = 10;
 
-        public int PageNumber
-        {
-            get
-            {
-                if (ViewState["PageNumber"] != null)
-                    return Convert.ToInt32(ViewState["PageNumber"]);
-                return 0;
-            }
-            set
-            {
-                ViewState["PageNumber"] = value;
-            }
-        }
-
-        protected void ViewPage_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            PageNumber = Convert.ToInt32(e.CommandArgument) - 1;
-            LoadData();
-        }
+        public int PageNumber { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request["page"] != null)
+            {
+                int page;
+                if (int.TryParse(Request["page"], out page))
+                {
+                    PageNumber = page;
+                }
+            }
+
+            if (PageNumber < 1) PageNumber = 1;
+
             if (!Page.IsPostBack)
                 LoadData();
+        }
+
+        public string GetSelectUrl(string id)
+        {
+            string url = Request.Path + "?id=" + id + "&&act=read";
+
+            if (Request["page"] != null)
+                url += "&&page=" + PageNumber;
+
+            return url;
+        }
+
+        public string GetPageUrl(string pageNumber)
+        {
+            string url = Request.Path + "?";
+            if(Request["id"] != null)
+                url += "id=" + Request["id"] + "&&";
+            if (Request["act"] != null)
+                url += "act=" + Request["act"] + "&&";
+            url += "page=" + pageNumber;
+            return url;
         }
 
         private void LoadData()
@@ -53,24 +64,11 @@ namespace Controls
                                       DataSource = allData,
                                       AllowPaging = true,
                                       PageSize = PageSize,
-                                      CurrentPageIndex = PageNumber
+                                      CurrentPageIndex = PageNumber - 1
                                   };
 
                 ViewAllData.DataSource = pgitems;
                 ViewAllData.DataBind();
-            }
-        }
-
-        protected void SelectLink_Click(object sender, EventArgs e)
-        {
-            if (Select != null)
-            {
-                var selectIdButton = sender as LinkButton;
-                if (selectIdButton != null)
-                {
-                    string id = selectIdButton.CommandArgument;
-                    Select(new Guid(id));
-                }
             }
         }
 

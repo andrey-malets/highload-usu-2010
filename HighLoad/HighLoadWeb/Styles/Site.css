@@ -5,7 +5,7 @@
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
-    color: Black;
+    color: #333333;
 }
 
 .page
@@ -74,6 +74,13 @@ tr.title
 
 .view
 {
+	padding: 6px;
+}
+
+.titleview
+{
+	background-color: #DEE8F5; 
+	font-weight: bold;
 	padding: 6px;
 }
 
