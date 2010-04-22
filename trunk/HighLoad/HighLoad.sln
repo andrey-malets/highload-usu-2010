@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfClientBase", "Storage\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageServiceClient", "Storage\Client\StorageClient\StorageServiceClient.csproj", "{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "DataManager\DataManager.csproj", "{D968BC87-F652-4C7B-9177-97148274FDE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,14 @@ Global
 		{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +145,7 @@ Global
 		{E030052A-49A8-4586-9F42-01B505FE1677} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
 		{9DBD2C5E-E5FB-4556-8C31-FBABBB0A37A4} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
 		{0A12B5FE-3508-474D-A1D7-ED271DD26A6F} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
+		{D968BC87-F652-4C7B-9177-97148274FDE1} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
 		{2AB4C9F8-0F18-4A78-A8ED-4890095858FD} = {E030052A-49A8-4586-9F42-01B505FE1677}
 	EndGlobalSection
 EndGlobal
