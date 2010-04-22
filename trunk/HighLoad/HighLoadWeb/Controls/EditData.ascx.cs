@@ -7,7 +7,33 @@ namespace Controls
 {
     public partial class EditData : UserControl
     {
-        protected DataRow Entity { get; private set; }
+//        protected DataRow Entity { get; private set; }
+
+
+        private DataRow entity;
+
+        protected Guid? EntityId
+        {
+            get
+            {
+                if (Request["id"] == null)
+                    return null;
+
+                return new Guid(Request["id"]);
+            }
+        }
+
+
+        protected DataRow Entity
+        {
+            get 
+            { 
+                return entity 
+                            ?? 
+                         (entity = (!EntityId.HasValue ? new DataRow() : TestServer.GetData(EntityId.Value))); 
+            }
+        }
+
 
         public string GetUrl()
         {
@@ -22,25 +48,26 @@ namespace Controls
             return url;
         }
 
-        void Page_Init(object sender, EventArgs e)
-        {
-            if (Request["id"] != null)
-            {
-                var id = new Guid(Request["id"]);
-                Entity = TestServer.GetData(id);
-                if (Entity != null)
-                {
-                    Number.Text = Entity.Number.ToString();
-                    Name.Text = Entity.Name;
-                    return;
-                }
-            }
-            Response.Redirect(Request.Path);
-        }
+//        void Page_Init(object sender, EventArgs e)
+//        {
+//            if (Request["id"] != null)
+//            {
+//                var id = new Guid(Request["id"]);
+////                Entity = TestServer.GetData(id);
+//                if (Entity != null)
+//                {
+//                    Number.Text = Entity.Number.ToString();
+//                    Name.Text = Entity.Name;
+//                    return;
+//                }
+//            }
+//            Response.Redirect(Request.Path);
+//        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             CancelLink.NavigateUrl = GetUrl();
+            DataBind();
         }
 
 
@@ -49,7 +76,10 @@ namespace Controls
             var id = new Guid(Request["id"]);
             int number = int.Parse(Number.Text);
             string name = Name.Text;
-            TestServer.UpdateData(id, number, name);
+//            TestServer.UpdateData(id, number, name);
+            Entity.Name = name;
+            Entity.Number = number;
+            TestServer.AddData(Entity);
             Response.Redirect(GetUrl());
         }
     }
