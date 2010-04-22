@@ -10,7 +10,7 @@
     <tr>
         <td class="titleview">Number</td>
         <td class="view">
-            <asp:TextBox ID="Number" runat="server" />
+            <asp:TextBox ID="Number" Text="<%#Entity.Number%>"  runat="server" />
             <asp:RequiredFieldValidator runat="server" ID="NotEmptyNumberValidator" Text="*" 
                 ControlToValidate="Number" ErrorMessage="Number field can not be empty." />
             <asp:RegularExpressionValidator runat="server" ID="NumberValidator" Text="*" 
@@ -21,7 +21,7 @@
     <tr>
          <td class="titleview">Name</td>
          <td class="view">
-            <asp:TextBox ID="Name" runat="server" />
+            <asp:TextBox ID="Name" Text="<%#Entity.Name%>" runat="server" />
             <asp:RequiredFieldValidator runat="server" ID="NameValidator" Text="*" 
                 ControlToValidate="Name" ErrorMessage="Name field can not be empty." />
         </td>
