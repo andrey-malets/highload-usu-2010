@@ -30,10 +30,10 @@ namespace Controls
 
         public string GetSelectUrl(string id)
         {
-            string url = Request.Path + "?id=" + id + "&&act=read";
+            string url = Request.Path + "?id=" + id;
 
             if (Request["page"] != null)
-                url += "&&page=" + PageNumber;
+                url += "&page=" + PageNumber;
 
             return url;
         }
@@ -42,9 +42,7 @@ namespace Controls
         {
             string url = Request.Path + "?";
             if(Request["id"] != null)
-                url += "id=" + Request["id"] + "&&";
-            if (Request["act"] != null)
-                url += "act=" + Request["act"] + "&&";
+                url += "id=" + Request["id"] + "&";
             url += "page=" + pageNumber;
             return url;
         }
@@ -63,9 +61,13 @@ namespace Controls
                                   {
                                       DataSource = allData,
                                       AllowPaging = true,
-                                      PageSize = PageSize,
-                                      CurrentPageIndex = PageNumber - 1
+                                      PageSize = PageSize
                                   };
+
+                if (pgitems.PageCount < PageNumber)
+                    PageNumber = pgitems.PageCount;
+                   
+                pgitems.CurrentPageIndex = PageNumber - 1;
 
                 ViewAllData.DataSource = pgitems;
                 ViewAllData.DataBind();
