@@ -15,8 +15,8 @@
     <tr>
         <td class="view">
             <asp:HyperLink ID="SelectLink" runat="server"
-            NavigateUrl=<%# GetSelectUrl(Eval("Id").ToString()) %> 
-            Text="select" />
+                NavigateUrl=<%# GetSelectUrl(Eval("Id").ToString()) %> 
+                Text="select" />
         </td>
         <td class="view"><%# Eval("Number")%></td>
         <td class="view"><%# Eval("Name")%></td>
