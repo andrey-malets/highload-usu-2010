@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="StorageDataContract"
+                   namespace="USU.HighLoad.Storage.StorageDataContract">
+
+  <class name="DataRecord">
+    <id name="GlobalId">
+      <generator class="guid" />
+    </id>
+    <property name="Id" />
+    <property name="RevisionDate" />
+    <property name="Number" />
+    <property name="Name" />
+    <property name="IsDeleted" />
+    <property name="Updated" />
+  </class>
+</hibernate-mapping>
