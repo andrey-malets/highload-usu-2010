@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfClientBase", "Storage\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageServiceClient", "Storage\Client\StorageClient\StorageServiceClient.csproj", "{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "DataManager\DataManager.csproj", "{D968BC87-F652-4C7B-9177-97148274FDE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "Storage\DataManager\DataManager.csproj", "{D968BC87-F652-4C7B-9177-97148274FDE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
