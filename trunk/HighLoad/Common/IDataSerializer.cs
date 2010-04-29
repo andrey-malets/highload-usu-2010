@@ -2,8 +2,8 @@ namespace Common
 {
 	public interface IDataSerializer
 	{
-	    byte[] Serialize(string str);
+	    byte[] Serialize<T>(T param);
 
-        string Deserialize(byte[] bytes);
+        T Deserialize<T>(byte[] bytes);
 	}
 }
