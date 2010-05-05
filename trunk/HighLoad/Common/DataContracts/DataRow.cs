@@ -2,6 +2,7 @@
 
 namespace Common.DataContracts
 {
+    [Serializable]
 	public class DataRow : IStoragable
 	{
 		public Guid Id{ get; set; }

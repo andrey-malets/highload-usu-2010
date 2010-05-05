@@ -14,5 +14,5 @@ namespace Common
         {
             get; set;
         }
-	}
+    }
 }
