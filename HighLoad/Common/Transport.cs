@@ -29,7 +29,7 @@ namespace Common
             Stream responseStream = response.GetResponseStream();
             byte[] responseBuffer = new byte[BufferSize];
             responseStream.Read(responseBuffer, 0, responseBuffer.Length);// ?
-            string result = serializer.Deserialize(responseBuffer);
+            string result = serializer.Deserialize<string>(responseBuffer);
             response.Close();
             responseStream.Close();
             NameValueCollection nameValueCollection = new NameValueCollection();

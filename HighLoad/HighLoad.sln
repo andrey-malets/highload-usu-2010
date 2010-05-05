@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HighLoadWeb", "HighLoadWeb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{BDA85396-CEA9-4DFE-9A0D-F91B93816F86}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{881687B7-DB8A-4962-B8D6-346EBFB73B63}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCFStorage", "WCFStorage", "{881687B7-DB8A-4962-B8D6-346EBFB73B63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceContract", "Storage\Service\ServiceContract\ServiceContract.csproj", "{D17136DA-6741-4674-A990-895FD7211E57}"
 EndProject
@@ -44,6 +44,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageServiceClient", "Storage\Client\StorageClient\StorageServiceClient.csproj", "{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "Storage\DataManager\DataManager.csproj", "{D968BC87-F652-4C7B-9177-97148274FDE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleStorage", "SimpleStorage", "{131F788B-813A-4BF0-A2E0-3BE22E9E8F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService", "StorageService\StorageService.csproj", "{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{F658D028-D03A-4CBB-ACB8-5A9B2005537C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +139,22 @@ Global
 		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D968BC87-F652-4C7B-9177-97148274FDE1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,5 +169,7 @@ Global
 		{0A12B5FE-3508-474D-A1D7-ED271DD26A6F} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
 		{D968BC87-F652-4C7B-9177-97148274FDE1} = {881687B7-DB8A-4962-B8D6-346EBFB73B63}
 		{2AB4C9F8-0F18-4A78-A8ED-4890095858FD} = {E030052A-49A8-4586-9F42-01B505FE1677}
+		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC} = {131F788B-813A-4BF0-A2E0-3BE22E9E8F9A}
+		{F658D028-D03A-4CBB-ACB8-5A9B2005537C} = {131F788B-813A-4BF0-A2E0-3BE22E9E8F9A}
 	EndGlobalSection
 EndGlobal
