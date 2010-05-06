@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8049EE19-86B9-482F-9F0B-5C5C98633BA8}</ProjectGuid>
+    <ProjectGuid>{1AA83424-917C-4058-B1E3-96D9B477214B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>USU.HighLoad.Storage.StorageManager</RootNamespace>
-    <AssemblyName>HighLoad.Storage.StorageManager</AssemblyName>
+    <RootNamespace>DataManagerTest</RootNamespace>
+    <AssemblyName>DataManagerTest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.ServiceModel">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -48,15 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StorageService.cs" />
+    <Compile Include="DataManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceContract\ServiceContract.csproj">
-      <Project>{D17136DA-6741-4674-A990-895FD7211E57}</Project>
-      <Name>ServiceContract</Name>
+    <ProjectReference Include="..\..\DataManager\DataManager.csproj">
+      <Project>{D968BC87-F652-4C7B-9177-97148274FDE1}</Project>
+      <Name>DataManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StorageDataContract\StorageDataContract.csproj">
+    <ProjectReference Include="..\..\Service\StorageDataContract\StorageDataContract.csproj">
       <Project>{9B71AF86-97B4-479E-93A7-620A387E57A2}</Project>
       <Name>StorageDataContract</Name>
     </ProjectReference>

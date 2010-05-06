@@ -48,7 +48,7 @@
   <ItemGroup>
     <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate.dll</HintPath>
+      <HintPath>..\..\lib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -65,9 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityManager.cs" />
+    <Compile Include="IDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj">
+      <Project>{BDA85396-CEA9-4DFE-9A0D-F91B93816F86}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Service\StorageDataContract\StorageDataContract.csproj">
       <Project>{9B71AF86-97B4-479E-93A7-620A387E57A2}</Project>
       <Name>StorageDataContract</Name>
@@ -114,7 +119,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="NHibernate.config" />
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Queries\SQLQueryCreateDataTable.sql" />
   </ItemGroup>
   <ItemGroup>
