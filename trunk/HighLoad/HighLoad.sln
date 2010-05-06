@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9C1D2852-C465-470C-B13F-52E8F7393694}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagerTests", "Storage\Tests\DataManagerTest\DataManagerTests.csproj", "{1AA83424-917C-4058-B1E3-96D9B477214B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,14 @@ Global
 		{9C1D2852-C465-470C-B13F-52E8F7393694}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C1D2852-C465-470C-B13F-52E8F7393694}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9C1D2852-C465-470C-B13F-52E8F7393694}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1AA83424-917C-4058-B1E3-96D9B477214B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,5 +191,6 @@ Global
 		{2AB4C9F8-0F18-4A78-A8ED-4890095858FD} = {E030052A-49A8-4586-9F42-01B505FE1677}
 		{8BA55AA2-1DB0-47E5-86E9-A521CFEA0DFC} = {131F788B-813A-4BF0-A2E0-3BE22E9E8F9A}
 		{F658D028-D03A-4CBB-ACB8-5A9B2005537C} = {131F788B-813A-4BF0-A2E0-3BE22E9E8F9A}
+		{1AA83424-917C-4058-B1E3-96D9B477214B} = {E030052A-49A8-4586-9F42-01B505FE1677}
 	EndGlobalSection
 EndGlobal
