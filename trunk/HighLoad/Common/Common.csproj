@@ -54,12 +54,13 @@
     <Compile Include="IIndexServer.cs" />
     <Compile Include="IndexClient.cs" />
     <Compile Include="IServerEndpoint.cs" />
-    <Compile Include="IStorageClient.cs" />
+    <Compile Include="Clients\IStorageClient.cs" />
     <Compile Include="DataContracts\IStoragable.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerEndpoint.cs" />
     <Compile Include="ServiceOperations.cs" />
+    <Compile Include="Clients\StorageClient.cs" />
     <Compile Include="Transport.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
