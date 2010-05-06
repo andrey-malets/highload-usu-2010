@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Net;
+using Common.Serialization;
 
 namespace Common
 {
