@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Common.DataContracts;
+using Common.Serialization;
 
 namespace Common
 {

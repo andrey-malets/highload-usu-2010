@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Common;
+using Common.Serialization;
 using StorageService;
 
 namespace ServiceHost

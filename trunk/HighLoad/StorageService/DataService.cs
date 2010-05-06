@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using Common;
 using Common.DataContracts;
+using Common.Serialization;
 
 namespace StorageService
 {
