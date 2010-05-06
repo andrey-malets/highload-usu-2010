@@ -9,7 +9,7 @@ using Common.Serialization;
 
 namespace Common
 {
-    class Transport : ITransport
+    public class Transport : ITransport
     {
         private IDataSerializer serializer;
         private const int BufferSize = 4096;
@@ -20,21 +20,27 @@ namespace Common
         public NameValueCollection Interact(IServerEndpoint serverEndpoint, NameValueCollection message)
         {
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(serverEndpoint.Url + ":" + serverEndpoint.Port);
-            request.Method = "POST";
-            byte[] postBuffer = serializer.Serialize(message.Get("POST")); // ?
-            request.ContentLength = postBuffer.Length;
+            byte[] postBuffer;
             Stream postData = request.GetRequestStream();
-            postData.Write(postBuffer,0,postBuffer.Length);
-            postData.Close();
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream responseStream = response.GetResponseStream();
-            byte[] responseBuffer = new byte[BufferSize];
-            responseStream.Read(responseBuffer, 0, responseBuffer.Length);// ?
-            string result = serializer.Deserialize<string>(responseBuffer);
+            byte[] responseBuffer;
+            string result;
+            NameValueCollection nameValueCollection = new NameValueCollection();
+            request.Method = "POST";
+            foreach (KeyValuePair<string,string> collection in message)
+            {
+                postBuffer = serializer.Serialize(collection.Value);
+                request.ContentLength = postBuffer.Length;
+                postData.Write(postBuffer, 0, postBuffer.Length);
+                responseBuffer = new byte[BufferSize];
+                responseStream.Read(responseBuffer, 0, responseBuffer.Length);
+                result = serializer.Deserialize<string>(responseBuffer);
+                nameValueCollection.Add(collection.Key, result);
+            }
+            postData.Close();
             response.Close();
             responseStream.Close();
-            NameValueCollection nameValueCollection = new NameValueCollection();
-            nameValueCollection.Add("RESULT", result);
             return nameValueCollection;
         }
     }
