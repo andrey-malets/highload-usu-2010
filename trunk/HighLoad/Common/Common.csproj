@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BDA85396-CEA9-4DFE-9A0D-F91B93816F86}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -59,6 +59,7 @@
     <Compile Include="ITransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerEndpoint.cs" />
+    <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceOperations.cs" />
     <Compile Include="Clients\StorageClient.cs" />
     <Compile Include="Transport.cs" />

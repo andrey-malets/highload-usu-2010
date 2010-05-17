@@ -40,6 +40,7 @@ namespace ServiceHost
                 try
                 {
                     service.Open();
+                    Console.WriteLine( "service run");
                 }
                 catch ( Exception ex )
                 {
