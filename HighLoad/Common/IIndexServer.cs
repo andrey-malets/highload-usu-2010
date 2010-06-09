@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Common.DataContracts;
 
-namespace DataContract
+namespace Common
 {
 	public interface IIndexServer
 	{
