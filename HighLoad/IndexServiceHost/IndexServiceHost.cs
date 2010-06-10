@@ -6,12 +6,12 @@ using Common.Serialization;
 
 namespace USU.HighLoad.Index.IndexServiceHost
 {
-    class IndexServiceHost : ServiceBase
+    public class IndexServiceHost : ServiceBase
     {
         private IIndexServer indexServer;
         private IDataSerializer dataSerializer;
         private const int BuffSize = 8192;
-        IndexServiceHost(IIndexServer indexServer, IDataSerializer dataSerializer, ServerEndpoint[] endpoints)
+        public IndexServiceHost(IIndexServer indexServer, IDataSerializer dataSerializer, ServerEndpoint[] endpoints)
             : base(endpoints)
         {
             this.indexServer = indexServer;
