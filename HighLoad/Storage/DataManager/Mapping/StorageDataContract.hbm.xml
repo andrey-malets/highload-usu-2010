@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
-                   assembly="StorageDataContract"
+                   assembly="HighLoad.Storage.StorageDataContract"
                    namespace="USU.HighLoad.Storage.StorageDataContract">
 
-  <class name="DataRecord">
+  <class name="USU.HighLoad.Storage.StorageDataContract.DataRecord, USU.HighLoad.Storage.StorageDataContract">
     <id name="GlobalId">
       <generator class="guid" />
     </id>

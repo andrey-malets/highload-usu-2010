@@ -52,6 +52,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.csproj">
+      <Project>{BDA85396-CEA9-4DFE-9A0D-F91B93816F86}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataManager\DataManager.csproj">
+      <Project>{D968BC87-F652-4C7B-9177-97148274FDE1}</Project>
+      <Name>DataManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceContract\ServiceContract.csproj">
       <Project>{D17136DA-6741-4674-A990-895FD7211E57}</Project>
       <Name>ServiceContract</Name>

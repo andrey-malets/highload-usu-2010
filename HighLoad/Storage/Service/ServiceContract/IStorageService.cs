@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using USU.HighLoad.Storage.StorageDataContract;
+using Common.DataContracts;
 
 namespace USU.HighLoad.Storage.ServiceContract
 {

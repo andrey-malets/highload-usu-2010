@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Common.DataContracts;
 
 namespace USU.HighLoad.Storage.StorageDataContract
 {
     [DataContract]
-    public class DataRecord
+    public class DataRecord : IStoragable
     {
         [DataMember]
         public Guid Id { get; set; }
