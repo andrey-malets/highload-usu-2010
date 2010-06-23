@@ -12,6 +12,8 @@ namespace USU.HighLoad.Storage.DataManager
 
         T Load(Guid id);
 
+        List<T> LoadList(Guid id);
+
         void Save(T record);
 
         void Update(T record);

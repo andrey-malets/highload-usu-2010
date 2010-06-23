@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0A12B5FE-3508-474D-A1D7-ED271DD26A6F}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.csproj">
+      <Project>{BDA85396-CEA9-4DFE-9A0D-F91B93816F86}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClientBase\SelfClientBase.csproj">
       <Project>{9DBD2C5E-E5FB-4556-8C31-FBABBB0A37A4}</Project>
       <Name>SelfClientBase</Name>
