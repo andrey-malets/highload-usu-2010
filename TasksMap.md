@@ -1,0 +1,1 @@
+<img width='800' height='600' src='http://cl.usu.edu.ru/tasks.jpeg' />
